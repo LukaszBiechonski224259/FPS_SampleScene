@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     Rigidbody rb;
     public Transform orientation;
+    public AudioSource player;
 
     [Header("Config")]
     private float horizontalInput, verticalInput;
@@ -64,5 +66,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        player.Play();
+        //Invoke("await",4f);
+        Destroy(other.gameObject,4.1f);
+    }
 
+    void await()
+    {
+        
+    } 
 }
